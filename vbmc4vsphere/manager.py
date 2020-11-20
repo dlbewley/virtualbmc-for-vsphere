@@ -59,7 +59,7 @@ class VirtualBMCManager(object):
             raise exception.VMNotFound(vm=vm_name)
 
         try:
-            config = configparser.ConfigParser()
+            config = configparser.ConfigParser(interpolation=None)
             config.read(config_path)
 
             bmc = {}
@@ -84,7 +84,7 @@ class VirtualBMCManager(object):
             raise exception.VMNotFound(vm=vm_name)
 
     def _store_config(self, **options):
-        config = configparser.ConfigParser()
+        config = configparser.ConfigParser(interpolation=None)
         config.add_section(DEFAULT_SECTION)
 
         for option, value in options.items():

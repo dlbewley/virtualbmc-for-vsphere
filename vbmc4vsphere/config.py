@@ -47,7 +47,7 @@ class VirtualBMCConfig(object):
     }
 
     def initialize(self):
-        config = configparser.ConfigParser()
+        config = configparser.ConfigParser(interpolation=None)
         config.read(CONFIG_FILE)
         self._conf_dict = self._as_dict(config)
         self._validate()
